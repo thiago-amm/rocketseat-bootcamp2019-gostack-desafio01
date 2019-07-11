@@ -24,4 +24,13 @@ server.get("/projects", (req, res) => {
   return res.json(projects);
 });
 
+// Atualiza um projeto cadastrado.
+server.put("/projects/:id", (req, res) => {
+  const { id } = req.params;
+  const { title } = req.body;
+  const project = projects.find(proj => proj.id === id);
+  project.title = title;
+  return res.json(project);
+});
+
 server.listen(3000);
